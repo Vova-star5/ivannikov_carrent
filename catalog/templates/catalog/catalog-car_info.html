@@ -1,0 +1,27 @@
+{% extends "catalog/base-catalog.html" %}
+{% load static %}
+
+{% block title %} {{ car.name }} {% endblock %}
+{% block main %}
+<h1 class="h1">
+    {{ car.name}}
+    </h1>
+    <div class="card">
+    <div class="left">
+    <img class="car-img" src="{{ car.img.url }}">
+    <button class="btn rentbtn">Взять за {{ car.price }} р / день</button>
+    </div>
+    <div class="right">
+    <p class="paragraph">
+        <b>Модель: </b>
+        {{ car.carmodel }}
+    </p>
+    <p class="paragraph">
+        <b>Описание:</b> 
+        {{ car.description }}
+    </p>
+    </div>
+    </div>
+
+
+{% endblock %}

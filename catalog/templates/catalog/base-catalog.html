@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "style.css" %}'>
+    <title>
+        {% block title %}title{% endblock %}
+        
+    </title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <img class="logo" src="{% static "img/logo.jpg" %}" alt="">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#about">О нас
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="#advantages">Наши преимущества
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#catalog">Каталог машин
+                            </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#contacts">Контакты
+                            </a>
+                    </li>
+
+
+                    
+                </ul>
+            </nav>
+        </header>
+        <main class="main">
+            {% block main %}
+            {% endblock %}
+
+
+        </main>
+        <footer class="footer">
+            Иванников
+
+        </footer>
+    </div>
+</body>
+</html>
