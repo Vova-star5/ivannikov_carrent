@@ -17,8 +17,13 @@ class Car(models.Model):
 
     
 class Order(models.Model):
-    delivery_adress = models.TextField(null=False, blank=True)
-    promocode = models.CharField(max_length=20, null=False, blank=True)
+    lastname = models.CharField(max_length=20, null=False, blank=False)
+    name = models.CharField(max_length=20, null=False, blank=False)
+    surname = models.CharField(max_length=20, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    phone = models.CharField(max_length=12, null=False, blank=False)
+    delivery_adress = models.TextField(null=False, blank=True, max_length=100)
+    babyseat = models.BooleanField(verbose_name="Добавить детское кресло")
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    # car = models.ForeignKey(Car, on_delete=models.PROTECT)
     # products = models.ManyToManyField(Product, related_name="orders")

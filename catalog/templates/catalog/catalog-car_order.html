@@ -1,0 +1,18 @@
+{% extends "catalog/base-catalog.html" %}
+{% load static %}
+
+{% block title %} {{ car.name }} {% endblock %}
+{% block main %}
+<h1 class="h1">Оформить заказ</h1>
+    <img class="car-img" src="{{ car.img.url }}">
+    
+<form name="addorder" method="POST" class="orderform">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    {{ form.as_p }}
+    <p>
+    <button class="submit orderbutton" type="submit">Оформить</button>
+    </p>
+  </form>    
+
+{% endblock %}

@@ -64,7 +64,7 @@
         <p class="paragraph">
         {{ car.description | truncatechars:100 }}
         </p>
-        <button class="btn rentbtn">Взять за {{ car.price }} р / день</button>
+        <a class="btn rentbtn" href="{% url "car_order" car.pk %}">Взять за {{ car.price }} р / день</a>
         
         <!-- {{ car.discount }} -->
     </li>
