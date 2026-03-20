@@ -23,7 +23,7 @@ class Order(models.Model):
     email = models.EmailField(null=False, blank=False)
     phone = models.CharField(max_length=12, null=False, blank=False)
     delivery_adress = models.TextField(null=False, blank=True, max_length=100)
-    babyseat = models.BooleanField(verbose_name="Добавить детское кресло")
+    babyseat = models.BooleanField(verbose_name="Добавить детское кресло", default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     # car = models.ForeignKey(Car, on_delete=models.PROTECT)
     # products = models.ManyToManyField(Product, related_name="orders")
