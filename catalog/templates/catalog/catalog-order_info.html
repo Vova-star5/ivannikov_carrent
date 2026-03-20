@@ -1,0 +1,42 @@
+{% extends "catalog/base-catalog.html" %}
+{% load static %}
+
+{% block title %} {{ car.name }} {% endblock %}
+{% block main %}
+<h1 class="h1">
+    Заказ оформлен
+    </h1>
+    <div class="card">
+        <table class="table">
+            <tr>
+        <td>Номер заказа: </td>
+        <td>{{ order.pk }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Заказчик: 
+            </td>
+            <td>
+                {{ order.lastname }} 
+                {{ order.name }} 
+                {{ order.surname }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Телефон: 
+            </td>
+            <td>
+                {{ order.phone }}
+            </td>
+        </tr>
+        <tr>
+        <td>Адрес:</td>
+        <td>{{ order.delivery_adress }}</td>
+        </tr>
+        </table>
+    </div>
+
+
+{% endblock %}

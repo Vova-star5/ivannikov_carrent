@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import catalog_index, car_info
+from .views import catalog_index, car_info, car_order, order_info
+
+# app_name = "catalog"
 
 urlpatterns = [
     path("", catalog_index, name="index"),
     path("cars/<int:pk>/",  car_info, name="car_info"),
+    path("cars/<int:pk>/order",  car_order, name="car_order"),
+    path("orders/<int:pk>/",  order_info, name="order_info"),
 
 ]
