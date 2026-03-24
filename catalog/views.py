@@ -21,7 +21,16 @@ def car_order(request: HttpRequest, pk):
     if request.method == "POST":
         form = AddOrderForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = Order()
+            order.car = Car.objects.get(pk=pk)
+            order.delivery_address = form.cleaned_data["delivery_address"]
+            order.phone = form.cleaned_data["phone"]
+            order.babyseat = form.cleaned_data["babyseat"]
+            order.user = request.user
+            order.save()
+            
+            
+
             
             url = reverse("order_info", kwargs={"pk": order.pk})
             # print(f"new url {url}")
@@ -37,3 +46,16 @@ def car_order(request: HttpRequest, pk):
 def order_info(request: HttpRequest, pk):
     context = {"order": Order.objects.get(pk=pk)}
     return render(request, "catalog/catalog-order_info.html", context=context)
+
+def car_list(request: HttpRequest):
+    
+    context = {"cars": Car.objects.all()}
+    return render(request, "catalog/catalog_cars.html", context=context)
+
+def about(request: HttpRequest):
+    
+    context = {"cars": Car.objects.all()}
+    return render(request, "catalog/catalog-about.html", context=context)
+
+def contacts(request: HttpRequest):
+    return render(request, "catalog/catalog_contacts.html")

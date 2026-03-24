@@ -18,8 +18,7 @@
                 Заказчик: 
             </td>
             <td>
-                {{ order.lastname }} 
-                {{ order.name }} 
+                {{ order.user }} 
                 {{ order.surname }}
             </td>
         </tr>
@@ -33,7 +32,21 @@
         </tr>
         <tr>
         <td>Адрес:</td>
-        <td>{{ order.delivery_adress }}</td>
+        <td>{{ order.delivery_address }}</td>
+        </tr>
+        <tr>
+            <td>
+                Автомобиль:
+            </td>
+            <td>{{ order.car.name }}</td>
+        </tr>
+        <tr>
+        <td>Детское кресло: </td>
+        {% if order.babyseat %}
+        <td>да</td>
+        {% else %}
+        <td>Нет</td>
+        {% endif %}
         </tr>
         </table>
     </div>
