@@ -1,0 +1,42 @@
+{% extends "catalog/base-catalog.html" %}
+{% load static %}
+
+{% block title %} Каталог {% endblock %}
+{% block main %}
+
+<section class="section section-catalog" id="catalog">
+    <h2 class="h2">Каталог</h2>
+    <ul class="list car-list">
+
+
+    {% for car in cars %}
+    <li class="list-item car-item">
+        <h3 class="h3">
+            <a href="{% url "car_info" car.pk %}">
+        {{ car.name }}
+        </a>
+        
+        </h3>
+        
+         
+         {% if car.img %}
+         <img class="car-img" src="{{ car.img.url }}">
+         {% endif %}
+         <br>
+
+        <p class="paragraph">{{ car.model }}</p>
+        <p class="paragraph">
+        {{ car.description | truncatechars:100 }}
+        </p>
+        <a class="btn rentbtn" href="{% url "car_order" car.pk %}">Взять за {{ car.price }} р / день</a>
+        
+        <!-- {{ car.discount }} -->
+    </li>
+    
+
+    {% empty %}
+    {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}

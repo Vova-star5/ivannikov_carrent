@@ -1,0 +1,21 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+  Регистрация
+{% endblock %}
+
+
+{% block main %}
+  <h1 class="h1">Регистрация</h1>
+  {% if user.is_authenticated %}
+  Вы уже авторизированы
+  <p><a href="{% url "myauth:about-me" %}">About me</a>
+  {% else %}
+  <form class="form orderform" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn submit" type="submit" value="registration">Зарегистрироваться</button>
+  </form>
+  {% endif %}
+
+{% endblock %}

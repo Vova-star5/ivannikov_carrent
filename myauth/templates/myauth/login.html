@@ -1,0 +1,15 @@
+{% extends "myauth/base.html" %}
+
+{% block title %}
+    Вход
+{% endblock title %}
+    
+{% block main  %}
+<h1 class="h1">Вход</h1>
+
+    <form class="form orderform" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn submit" type="submit">Войти</button>
+    </form>
+{% endblock main %}

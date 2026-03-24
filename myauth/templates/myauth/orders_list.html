@@ -1,0 +1,51 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+  Списокк заказов
+{% endblock %}
+
+
+{% block main %}
+  <h1 class="h1">Список заказов</h1>
+  {% if user.is_authenticated %}
+    <h2 class="h2">Личная информация</h2>
+    <div class="profile">
+
+    <div class="profile-left">
+      <ul class="profile-menu">
+        <li class="profile-item">
+      <a class="profile-link" href="{% url "myauth:profile" %}">Профиль</a>
+      </li>
+        <li class="profile-item">
+      <a class="profile-link" href="{% url "myauth:orders" %}">Заказы</a>
+      </li>
+      <li class="profile-item">
+      <form method="POST" action="{% url "myauth:logout" %}">
+        {% csrf_token %}
+        <button class="exitbtn" type="submit" value="logout">Выйти</button>
+        </button>
+      </form>
+      </li>
+      </ul>
+    </div>
+    <div class="profile-right">
+      <ul class="orders-list">
+      {% for order in orders %}
+      <li class="order-list-item">
+      <a href="{% url "order_info" order.pk %}">
+      #{{ order.pk }} | 
+      {{ order.created_at }}
+      </a>
+      </li>
+      {% endfor %}
+      </ul>
+
+    </div>
+
+      
+
+    
+  {% else %}
+    <h2>User is anonymous</h2>
+  {% endif %}
+{% endblock %}

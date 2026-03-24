@@ -5,7 +5,7 @@
 {% block main %}
 <h1 class="h1">Оформить заказ</h1>
     <img class="car-img" src="{{ car.img.url }}">
-    
+{% if user.is_authenticated %}    
 <form name="addorder" method="POST" class="orderform">
     {% csrf_token %}
     <!-- {{ form.as_p }} -->
@@ -14,5 +14,17 @@
     <button class="submit orderbutton" type="submit">Оформить</button>
     </p>
   </form>    
+{% else %}
 
+  <h2>Требуется аутентификация</h2>
+<p>
+
+<a href="{% url "myauth:login" %}">Войти</a>
+
+
+<a href="{% url "myauth:registration" %}">Зарегистрироваться
+  </a>
+  </p>
+                            
+{% endif %}
 {% endblock %}
